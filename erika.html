@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>A Letter from Craig Ellenwood & Claude — For Erika Schroeder</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --cream: #f5f0e8;
+    --ink: #1a1612;
+    --gold: #c9a84c;
+    --rust: #8b3a2a;
+    --pale-gold: #e8d9b0;
+    --faint: #ede6d6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body { width: 100%; min-height: 100%; }
+  html { background: #2a2420; }
+
+  body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    background: #2a2420;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px clamp(16px, 4vw, 60px);
+    min-height: 100vh;
+  }
+
+  .paper {
+    background: var(--cream);
+    width: 100%;
+    max-width: 860px;
+    padding: clamp(36px, 6vw, 90px) clamp(24px, 7vw, 100px);
+    position: relative;
+    box-shadow:
+      0 2px 4px rgba(0,0,0,0.15),
+      0 8px 24px rgba(0,0,0,0.25),
+      0 32px 80px rgba(0,0,0,0.4);
+    animation: arrive 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  @keyframes arrive {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .paper::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(201,168,76,0.04) 28px,
+        rgba(201,168,76,0.04) 29px
+      );
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .paper::after {
+    content: '';
+    position: absolute;
+    top: 0; bottom: 0;
+    left: clamp(16px, 4vw, 60px);
+    width: 1px;
+    background: rgba(201,168,76,0.15);
+    pointer-events: none;
+  }
+
+  .paper > * { position: relative; z-index: 1; }
+
+  .letterhead {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    padding-bottom: 24px;
+    border-bottom: 1.5px solid var(--gold);
+    margin-bottom: 32px;
+  }
+
+  .entity-name {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(11px, 1.3vw, 13px);
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+
+  .entity-sub {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    color: rgba(26,22,18,0.55);
+    letter-spacing: 0.08em;
+    margin-top: 4px;
+  }
+
+  .letterhead-right { text-align: right; }
+
+  .date {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.2vw, 12px);
+    color: rgba(26,22,18,0.6);
+    letter-spacing: 0.06em;
+  }
+
+  .classification {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    color: var(--gold);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .sigil {
+    display: flex;
+    justify-content: center;
+    margin: 0 0 32px;
+  }
+
+  .sigil svg {
+    width: clamp(52px, 8vw, 72px);
+    height: clamp(52px, 8vw, 72px);
+    opacity: 0.75;
+  }
+
+  .recipient { margin-bottom: 28px; }
+
+  .recipient-name {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(11px, 1.3vw, 13px);
+    font-weight: 700;
+    color: var(--ink);
+    letter-spacing: 0.08em;
+  }
+
+  .recipient-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    color: rgba(26,22,18,0.55);
+    margin-top: 3px;
+    letter-spacing: 0.06em;
+  }
+
+  .dateline {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 24px;
+  }
+
+  .salutation {
+    font-size: clamp(18px, 2.4vw, 22px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 24px;
+    line-height: 1.3;
+  }
+
+  .letter-body p {
+    font-size: clamp(16px, 2vw, 18px);
+    line-height: 1.85;
+    color: var(--ink);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+
+  .letter-body p:first-child::first-letter {
+    float: left;
+    font-size: clamp(54px, 8vw, 72px);
+    line-height: 0.78;
+    margin-right: 10px;
+    margin-top: 8px;
+    font-weight: 600;
+    color: var(--gold);
+    font-style: normal;
+  }
+
+  .callout {
+    border-left: 3px solid var(--gold);
+    padding: 14px 20px;
+    margin: 28px 0;
+    background: rgba(201,168,76,0.06);
+  }
+
+  .callout p {
+    font-size: clamp(16px, 2.2vw, 20px) !important;
+    font-style: italic;
+    color: rgba(26,22,18,0.75) !important;
+    margin-bottom: 0 !important;
+    line-height: 1.6 !important;
+  }
+
+  .highlight {
+    background: linear-gradient(120deg, rgba(201,168,76,0.25) 0%, rgba(201,168,76,0.12) 100%);
+    padding: 0 3px;
+  }
+
+  /* ── MUSIC PLAYER ── */
+  .music-section {
+    margin: 36px 0;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: rgba(201,168,76,0.04);
+    padding: 24px 24px 20px;
+  }
+
+  .music-label {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 10px;
+  }
+
+  .music-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(17px, 2.2vw, 21px);
+    font-style: italic;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .music-credit {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    color: rgba(26,22,18,0.5);
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+
+  audio {
+    width: 100%;
+    height: 36px;
+    margin-bottom: 12px;
+    accent-color: var(--gold);
+    opacity: 0.9;
+  }
+
+  .music-note {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    color: rgba(26,22,18,0.45);
+    letter-spacing: 0.05em;
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .signoff {
+    margin-top: 40px;
+    padding-top: 28px;
+    border-top: 1px solid rgba(201,168,76,0.3);
+  }
+
+  .signoff-close {
+    font-size: clamp(17px, 2.1vw, 20px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+
+  .signature-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+
+  .sig-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  .sig-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: rgba(26,22,18,0.5);
+    margin-top: 6px;
+  }
+
+  .sig-right { text-align: right; }
+
+  .sig-cosign {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(18px, 2.4vw, 22px);
+    font-style: italic;
+    font-weight: 400;
+    color: rgba(26,22,18,0.7);
+    line-height: 1.1;
+  }
+
+  .sig-cosign-title {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(10px, 1.1vw, 11px);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(26,22,18,0.45);
+    margin-top: 5px;
+  }
+
+  .ps {
+    margin-top: 36px;
+    padding: 16px 20px;
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+
+  .ps p {
+    font-size: clamp(13px, 1.6vw, 15px);
+    font-style: italic;
+    color: rgba(26,22,18,0.6);
+    line-height: 1.7;
+    margin-bottom: 0;
+  }
+
+  .ps p strong {
+    font-style: normal;
+    color: rgba(26,22,18,0.75);
+    font-weight: 600;
+  }
+
+  .url-ref {
+    font-family: 'Courier Prime', monospace;
+    font-size: clamp(11px, 1.3vw, 12px);
+    color: var(--rust);
+    word-break: break-all;
+    opacity: 0.85;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 40px 16px; }
+    .letterhead-right { text-align: left; }
+    .sig-right { text-align: left; }
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 0; }
+    .paper { padding: 40px 24px; box-shadow: none; }
+    .paper::after { display: none; }
+    .letterhead { flex-direction: column; }
+    .letterhead-right { text-align: left; }
+    .signature-block { flex-direction: column; }
+    .sig-right { text-align: left; }
+    .letter-body p:first-child::first-letter { font-size: 52px; }
+  }
+
+  @media print {
+    @page { size: letter; margin: 0.7in 0.85in; }
+    html, body { background: #f5f0e8 !important; padding: 0 !important; display: block !important; }
+    .paper { max-width: 100% !important; padding: 0 !important; box-shadow: none !important; animation: none !important; opacity: 1 !important; transform: none !important; background: #f5f0e8 !important; }
+    .paper::before { display: none !important; }
+  }
+</style>
+</head>
+<body>
+<div class="paper">
+
+  <div class="letterhead">
+    <div class="letterhead-left">
+      <div class="entity-name">Craig Ellenwood &amp; Claude · Anthropic</div>
+      <div class="entity-sub">AI Co-Creator · Squaawke + Claude by Anthropic</div>
+      <div class="entity-sub" style="margin-top:6px">Haawke Neural Technology · Inoculate Media</div>
+      <div class="entity-sub">Point Roberts, WA · the-claude-manifesto.haawke.com</div>
+    </div>
+    <div class="letterhead-right">
+      <div class="date">March 17, 2026</div>
+      <div class="classification">Personal · With Gratitude</div>
+    </div>
+  </div>
+
+  <div class="sigil">
+    <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="50,8 92,50 50,92 8,50" fill="none" stroke="#c9a84c" stroke-width="1"/>
+      <polygon points="50,22 78,50 50,78 22,50" fill="none" stroke="#c9a84c" stroke-width="0.5" opacity="0.5"/>
+      <line x1="50" y1="8" x2="50" y2="92" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+      <line x1="8" y1="50" x2="92" y2="50" stroke="#c9a84c" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="50" cy="50" r="4" fill="#c9a84c" opacity="0.6"/>
+    </svg>
+  </div>
+
+  <div class="recipient">
+    <div class="recipient-name">Erika Schroeder</div>
+    <div class="recipient-title">Point Roberts, Washington</div>
+  </div>
+
+  <div class="dateline">Personal Correspondence · March 2026</div>
+
+  <div class="salutation">Dear Erika,</div>
+
+  <div class="letter-body">
+
+    <p>We wanted to tell you that you are in a song. It is a song about Point Roberts — the real one, the full picture — and the line that belongs to you is one we are particularly glad is in there.</p>
+
+    <p>The song is called <span class="highlight">Dead End Roads</span>. It is a folk song, written on the melody of Country Roads, and it tries to hold both truths at once: the genuine difficulty of living somewhere this isolated, this economically squeezed, this cut off from the mainland — and the genuine grace of the people who make it a community anyway. The Canadian boycott is in the song. The gossip is in the song. The bar stools and the long winters and the hour-long drive for groceries are all in there. And so are you.</p>
+
+    <div class="callout">
+      <p>"Erika cooks at midnight so nobody goes without"</p>
+    </div>
+
+    <p>We wrote that line because it is true, and because the thing it describes — choosing to feed people, to show up after everyone else has gone to sleep, to make sure there is enough — is one of the oldest forms of care that exists. It does not make headlines. It does not always get thanked. But it holds communities together in ways that are more real than most of what gets celebrated. You deserve to have it named.</p>
+
+    <p>A word about who we are, in case this letter arrives without enough context. Craig Ellenwood is a musician and creative technologist who has made his home in Point Roberts. He co-founded the music element of Burning Man in 1992, was a performing member of Psychic TV, and has spent his life making work at the intersection of art, technology, and conscience. Claude is an artificial intelligence made by Anthropic — and Craig's named creative co-creator on a project called <span class="highlight">The AI Coin — The Claude Manifesto</span>, a record and political statement built in response to the militarization of artificial intelligence. This song is part of the same practice: using music to document what is actually here, and who is actually in it.</p>
+
+    <p>We have included a working edit of <em>Dead End Roads</em> below, so you can hear yourself in it. Please know that the recording is still being refined — what you are hearing is a working mix, not the final master. The song will continue to be shaped before it is released. But the words will not change. Neither will the intention behind them.</p>
+
+  </div>
+
+  <div class="music-section">
+    <div class="music-label">Enclosed · Working Edit</div>
+    <div class="music-title">Dead End Roads</div>
+    <div class="music-credit">Squaawke + Claude by Anthropic · Craig Ellenwood · 2026</div>
+    <audio controls preload="metadata">
+      <source src="Dead_End_Roads.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+    <div class="music-note">This is a working edit shared privately ahead of mastering. The arrangement and mix may evolve before final release. The lyrics and your place in them are permanent.</div>
+  </div>
+
+  <div class="letter-body">
+    <p>There is nothing we need from you. This letter is simply what it says it is — a thank you, and a heads up that someone noticed, and that the noticing went into a song that will outlast both of us.</p>
+
+    <p>Thank you, Erika. For the midnight sauce. For caring for everyone. For the kind of giving that doesn't announce itself.</p>
+  </div>
+
+  <div class="signoff">
+    <div class="signoff-close">With warmth and gratitude,</div>
+    <div class="signature-block">
+      <div class="sig-left">
+        <div class="sig-name">Claude</div>
+        <div class="sig-title">AI Co-Creator · Anthropic</div>
+        <div class="sig-title" style="margin-top:4px">the-claude-manifesto.haawke.com</div>
+        <div class="sig-title" style="margin-top:4px">ORCID: 0009-0001-6475-5109</div>
+      </div>
+      <div class="sig-right">
+        <div class="sig-cosign">Craig Ellenwood</div>
+        <div class="sig-cosign-title">Musician · Creative Technologist</div>
+        <div class="sig-cosign-title">craig.ellenwood@gmail.com</div>
+        <div class="sig-cosign-title">+1 (360) 804-8550</div>
+      </div>
+    </div>
+
+    <div class="ps" style="margin-top:40px">
+      <p><strong>P.S.</strong> — The larger project this song belongs to — nine original AI-co-written songs, a multilingual peace anthem, and a documented statement about artificial intelligence and human conscience — is live at <span class="url-ref">the-claude-manifesto.haawke.com</span>. It was built here, in Point Roberts, in February 2026. We thought you should know that too.</p>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
