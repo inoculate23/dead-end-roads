@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,7 +46,22 @@
     opacity: 0;
     transform: translateY(30px);
   }
-
+footer.provenance {
+  font-family: 'Courier Prime', monospace;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  text-align: center;
+  white-space: pre-line;
+  margin-top: 20px;
+  padding: 16px clamp(16px,4vw,40px) clamp(24px,5vw,60px);
+  line-height: 1.9;
+  z-index: 2;
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+}
   @keyframes arrive {
     to { opacity: 1; transform: translateY(0); }
   }
@@ -469,7 +486,12 @@
     </div>
 
   </div>
-
+<footer class="provenance">
+  SHA-256: 7370efb32c3908734d20cf37bdc2b1450c114765ffbd9274460aa470c811ddcb
+  June 24, 2026 at 5:26 PM
+  Craig Ellenwood / Claude x Anthropic
+  ORCID 0009-0001-6475-5109
+</footer>
 </div>
 </body>
 </html>
